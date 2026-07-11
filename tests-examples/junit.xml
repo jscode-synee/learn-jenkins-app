@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <testsuites name="jest tests" tests="1" failures="0" errors="0" time="4.539">
- 
   <testsuite name="src/App.test.js" errors="0" failures="0" skipped="0" timestamp="2026-07-04T05:58:22" time="2.402" tests="1">
     <testcase classname="-renders learn Jenkins link" name="-renders learn Jenkins link" time="0.029">
     </testcase>
