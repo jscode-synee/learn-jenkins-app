@@ -1,0 +1,48 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:18-alpine'
+            reuseNode true
+        }
+    }
+
+    stages {
+        stage("Start") {
+            steps {
+                echo 'Build !!!'
+            }
+        }
+
+        stage("Build") {
+            steps {
+                sh '''
+                echo "Start Test!!!"
+                ls -al
+                node --version
+                npm --version
+                npm ci
+                npm run build
+                cd build 
+                ls -al
+                test index.html
+                echo "End Test!!!"  
+                '''
+            }    
+        }
+
+        stage("Test") {
+            steps {
+                sh '''
+                    npm test
+                    
+                '''
+            }
+        } 
+    }
+
+    post {
+        success {
+            archiveArtifacts artifacts: "**"
+        }
+    }
+}
